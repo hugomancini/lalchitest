@@ -1,0 +1,187 @@
+{% comment %}
+Icons row
+{% endcomment %}
+
+{% assign background = section.settings.color_icons_bg %}
+{% assign color = section.settings.color_icons_text %}
+
+{% if section.blocks.size > 0 %}
+<div data-section-id="{{ section.id }} no-margin-vertical" data-section-type="icons-row">
+  <div class="icons-row--background pad-sm no-margin-vertical" style="color: {{ color }}; background-color: {{ background }};">
+    <div class="container flex-center-vertical">
+      <div class="row-title text-center">
+        {% assign row-title = section.settings.row-title %}
+        {% assign subtitle = section.settings.subtitle %}
+        {% assign subtext = section.settings.subtext %}
+        {% assign sub-cta = section.settings.sub-cta %}
+        {% assign text_over_icons = section.settings.text-over-icons %}
+
+
+        {% if row-title != blank %}
+            <h1 class="icons-row__title">{{ row-title }}</h1>
+        {% endif %}
+        {% if subtitle != blank %}
+          <div class="flex-center">
+            <h4 class="icons-row__title">{{ subtitle }}</h4>
+          </div>
+        {% endif %}
+        {% if section.settings.show_long_text %}
+          {% if text_over_icons != blank %}
+              <p class="icons-row__text_over_icons">{{ text_over_icons }}</p>
+          {% endif %}
+        {% endif %}
+
+      </div>
+      <div class="row row-lg icon-row-container">
+        <div class="icons-row-wrapper">
+          {% for block in section.blocks %}
+            {%- assign image = block.settings.icon-new -%}
+            {% assign title = block.settings.title %}
+            {% assign content = block.settings.content %}
+            {% assign icon_words = block.settings.icon-new | split: ' ' %}
+            {%- capture icon -%}{%- for word in icon_words -%}{%- unless forloop.index == 1 -%}-{%- endunless -%}{{ word | lowercase | capitalize }}{%- endfor -%}{%- endcapture -%}
+
+            <div class="icons-row__item {% if block.settings.show_borders %}icon-borders{% endif %}">
+              <img src="{{ image | img_url: '1024x' }}" alt="{{ image.alt | escape }}">
+
+              {% if title != blank %}
+              <h3 class="icons-row__title">{{ title }}</h3>
+              {% endif %}
+
+              {% if content != blank %}
+              <p class="icons-row__content">{{ content }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div id="subpart">
+
+      {% if subtext != blank %}
+        <div id="subtext" class="text-center">
+          <h3 class="icons-row__title">{{ subtext }}</h3>
+        </div>
+        {% endif %}
+
+      {% if section.settings.show_button %}
+        <div class="flex-center">
+            <button>{{ sub-cta }}</button>
+        </div>
+      {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Icons row bis",
+  "max_blocks": 6,
+  "class": "icons-row-bis",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_icons_bg",
+      "label": "Background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "color_icons_text",
+      "label": "Text color",
+      "default": "#333"
+    },
+    {
+      "type": "text",
+      "id": "row-title",
+      "label": "Title",
+      "default": "Row - title "
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Sous-titrez ici"
+    },
+     {
+      "type": "checkbox",
+      "id": "show_long_text",
+      "label": "Show long text"
+    },
+    {
+      "type": "textarea",
+      "id": "text-over-icons",
+      "label": "Long texte au dessus des icones",
+      "default": "Modular is a powerful Shopify theme that will set you apart from the rest with Mosaic, Gallery, and Slideshow sections."
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Subtext"
+    },
+     {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button"
+    },
+     {
+      "type": "text",
+      "id": "sub-cta",
+      "label": "subtext button",
+      "default": "En savoir plus"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon-new",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Modular is a powerful Shopify theme that will set you apart from the rest with Mosaic, Gallery, and Slideshow sections."
+        },
+        {
+         "type": "checkbox",
+         "id": "show_borders",
+         "label": "Show borders"
+       }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icons row",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

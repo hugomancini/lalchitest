@@ -1,0 +1,121 @@
+
+<div class="image-blocks" style="display: flex; flex-wrap: nowrap;">
+  {% for block in section.blocks %}
+    {%- assign image-url = block.settings.image-url -%}
+    {% assign title = block.settings.title %}
+    {% assign sub-title = block.settings.sub-title %}
+    {% assign cta = block.settings.cta %}
+    {% assign link = block.settings.link %}
+    {% assign buttonPrimaryText = block.settings.cta_color %}
+    {% assign textColor = block.settings.text_color %}
+    {% assign buttonPrimaryBackground = block.settings.cta_bg %}
+    {% assign buttonPrimaryBorder = block.settings.cta_border | default: 'transparent' %}
+
+
+
+        <div class="image-block" style="background-image: url('{{image-url}}'); flex-grow: 1; height:100%; display: flex; flex-direction: column;">
+          <h1 style="color: {{ textColor }}">{{ title }}</h1>
+          <h2 style="color: {{ textColor }}">{{ sub-title }}</h2>
+          <a href="{{ link }}" class="button--primary button" style="color: {{ buttonPrimaryText }}; background-color: {{ buttonPrimaryBackground }}; border-color: {{ buttonPrimaryBorder }}">{{ cta }}</a>
+
+        </div>
+  {% endfor %}
+
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Image blocks",
+  "max_blocks": 6,
+  "class": "header--full",
+  "settings": [
+    {
+      "type": "header",
+      "content": "ImageBlocks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "url",
+          "id": "image-url",
+          "label": "Image-url"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Main text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature"
+        },
+          {
+          "type": "text",
+          "id": "sub-title",
+          "label": "Sub Title",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "Call to Action",
+          "default": "Je m'abonne"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "header",
+          "content": "Primary button colors"
+        },
+        {
+          "type": "color",
+          "id": "cta_color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "cta_bg",
+          "label": "Background",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "cta_border",
+          "label": "Border",
+          "default": "transparent"
+        }
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "Icons row",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

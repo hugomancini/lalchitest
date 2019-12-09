@@ -1,0 +1,282 @@
+{
+  "general": {
+    "404": {
+      "title": "Page non trouvée",
+      "subtext_html": "Page non trouvée. Cliquer ici pour continuer vos achats.",
+      "continue_shopping": "Continuer vos achats"
+    },
+    "header": {
+      "cart_label": "Carte"
+    },
+    "footer": {
+      "copyright_html": "Site Presidio Creative ",
+      "shopify": "Shopify ",
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "googleplus": "Google Plus",
+      "pinterest": "Pinterest",
+      "youtube": "YouTube",
+      "tumblr": "Tumblr",
+      "rss": "RSS",
+      "newsletter": {
+        "label": "Entrer votre email ",
+        "submit_button": "Inscription ",
+        "submit_success": "Merci pour votre inscription "
+      }
+    },
+    "slide_out_navigation": {
+      "search_label": "Rechercher ",
+      "search_placeholder": "Rechercher"
+    },
+    "newsletter_signup": {
+      "title": "Newsletter ",
+      "email_placeholder": "Email",
+      "success_message": "Merci pour votre inscription !",
+      "error_message": "Oups ! Erreur dans le formulaire. "
+    },
+    "reviews": {
+      "title": "Avis"
+    }
+  },
+  "collections": {
+    "listing_page": {
+      "title": "Collections",
+      "view_products": "VOIR LES PRODUITS"
+    },
+    "breadcrumbs": {
+      "home": "Accueil ",
+      "collections": "Collections",
+      "default_collection": "TOUS LES PRODUITS",
+      "products": "PRODUITS"
+    },
+    "tag_filtering": {
+      "filter_label": "Rechercher par mots-clés ",
+      "default_filter": "Tous"
+    },
+    "sorting_dropdown": {
+      "label": "Trier par:",
+      "all": "Tous",
+      "best_selling": "Meilleurs ventes",
+      "price_ascending": ""
+    },
+    "grid": {
+      "quick_view": "Vue rapide ",
+      "shop_all": "Acheter"
+    },
+    "errors": {
+      "continue_shopping": "Continuer vos achats "
+    }
+  },
+  "products": {
+    "labels": {
+      "sold_out": "SOLD OUT",
+      "unavailable": "INDISPONIBLE",
+      "on_sale": "PROMO",
+      "selected_product": "SELECTION",
+      "price_from": "à partir de"
+    },
+    "shop_bar": {
+      "buy_label": "Acheter maintenant "
+    },
+    "form": {
+      "qty": "QTY",
+      "quantity": "Quantity",
+      "submit": "ACHETER",
+      "sold_out": "Sold Out",
+      "success": "Ajouté !",
+      "submit_error": "OOPS!",
+      "submit_error_details": "Désolé, il semble que nous n'ayons plus assez de stock sur ce produit. Essayer de diminuer la quantité de produits."
+    },
+    "product_page": {
+      "product_details": "A propos",
+      "similar_products": "Vous pourriez aimer",
+      "similar_products_cta": "VOIR TOUS"
+    }
+  },
+  "cart": {
+    "labels": {
+      "cart_title": "Votre panier ",
+      "total_items": "Total des articles ",
+      "quantity": "Quantité ",
+      "total": "Total",
+      "update": "Mettre à jour ",
+      "subtotal": "Sous-total ",
+      "excluding_tax_and_shipping": "Hors frais de livraison ",
+      "continue_shopping": "CONTINUER MES ACHATS",
+      "checkout": "VALIDER MA COMMANDE",
+      "empty_cart": "Votre panier est vide ! ",
+      "items_added": "Dans votre panier",
+      "cart": "Carte",
+      "notes": "Commentaire ",
+      "add_a_note": "Ajouter un commentaire ",
+      "out_of_stock": "Out of stock"
+    }
+  },
+  "contact": {
+    "form": {
+      "submit_button": "Envoyer",
+      "submit_success": "Merci pour votre message ! On vous répond très vite :) ",
+      "name_field": "Nom :",
+      "email_field": "Email :",
+      "phone_field": "Téléphone :",
+      "message_field": "Votre message : "
+    }
+  },
+  "search": {
+    "content": {
+      "title": "Rechercher",
+      "results": {
+        "one": "résultat ",
+        "other": "résultas ",
+        "no_results": "aucun résultat trouvé "
+      }
+    },
+    "button": {
+      "text": "Rechercher "
+    }
+  },
+  "customer": {
+    "link": {
+      "my_account": "Mon compte",
+      "login": "Connexion ",
+      "sign_up": "Créer un compte",
+      "logout": "Déconnexion "
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Mot de passe ",
+      "sign_in": "Connexion ",
+      "forgot_password": "Mot passe oublié ",
+      "cancel": "Retour à la boutique ",
+      "guest_title": "ou",
+      "guest_continue": "Continuer en tant qu'invité "
+    },
+    "reset_password": {
+      "title": "Restaurer mon mot de passe",
+      "subtext": "Entrer un nouveau mot de passe",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer votre mot de passe",
+      "submit": "Restaurer mon mot de passe "
+    },
+    "recover_password": {
+      "title": "Restaurer mon mot de passe",
+      "subtext": "Entrer votre adresse email pour recevoir votre mot de passe",
+      "email": "Email",
+      "submit": "Restaurer mon mot de passe",
+      "cancel": "Annuler"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "submit": "Valider",
+      "cancel": "Annuler"
+    },
+    "account": {
+      "title": "Compte",
+      "details": "Détails du compte",
+      "view_addresses": "Adresse "
+    },
+    "orders": {
+      "title": "Vos commandes",
+      "none": "Vos commandes récentes",
+      "order_number": "Numéro de commande",
+      "date": "Date",
+      "payment_status": "Paiement ",
+      "fulfillment_status": "Statut d'expédition ",
+      "total": "Total"
+    },
+    "order": {
+      "title": "Commande",
+      "date": "Date",
+      "product": "PRODUIT",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "total": "Total",
+      "subtotal": "Sous total",
+      "shipping": "Livraison",
+      "billing_address": "Adresse de facturation",
+      "shipping_address": "Adresse de livraison",
+      "payment_status": "Paiement ",
+      "fulfillment_status": "Statut d'expédition ",
+      "fulfilled_at": "Complété",
+      "discount": "Réduction ",
+      "tax": "TVA",
+      "summary": "Résumé "
+    },
+    "addresses": {
+      "title": "Enregistrer votre adresse ",
+      "add_new": "Ajouter une nouvelle adresse",
+      "default": "Par défaut ",
+      "edit": "Modifier ",
+      "delete": "Supprimer",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "company": "Entreprise",
+      "address1": "Adresse",
+      "address2": "Complément d'adresse",
+      "city": "Ville",
+      "country": "Pays",
+      "province": "Région",
+      "zip": "Code postal ",
+      "phone": "Téléphone",
+      "set_default": "Définir comme adresse par défaut ",
+      "add": "Ajouter l'adresse ",
+      "cancel": "Annuler",
+      "update": "Mettre à jour",
+      "edit_address": "Modifier l'adresse",
+      "not_blank": "* champs requis"
+    },
+    "activate_account": {
+      "title": "Activer mon compte",
+      "subtext": "Vous êtes invité à créer un compte",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer votre mot de passe",
+      "submit": "Envoyer",
+      "cancel": "Refuser"
+    }
+  },
+  "password": {
+    "content": {
+      "site_by": ""
+    },
+    "forms": {
+      "email_placeholder": "Votre email",
+      "email_signup_submit_button": "Envoyer",
+      "enter_password_title": "Entrer votre mot de passe",
+      "enter_password_placeholder": "Votre mot de passe",
+      "call_to_action": "Découvrir",
+      "success": "Merci pour votre inscription ! "
+    }
+  },
+  "instagram": {
+    "follow": "",
+    "months": "janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre"
+  },
+  "onboarding": {
+    "faq_answer": "L'alchimiste",
+    "product_description": "L'alchimiste "
+  },
+  "date_formats": {
+    "month_day_year": " %d %b %Y"
+  },
+  "shopify": {
+    "dates": {
+      "formats": {
+        "month_day": "%d %B"
+      }
+    },
+    "checkout": {
+      "stock": {
+        "product_column_header": "PRODUITS"
+      }
+    },
+    "page_titles": {
+      "products": "LES PRODUITS"
+    }
+  }
+}

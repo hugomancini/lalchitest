@@ -1,0 +1,289 @@
+{% assign grid_size = "s1 sm_s12 lg_s13" %}
+{% case section.blocks.size %}
+  {% when 1 %}
+     {% assign grid_size = "s1 sm_s12 lg_s1" %}
+  {% when 2 %}
+     {% assign grid_size = "s1 sm_s12 lg_s12" %}
+  {% when 3 %}
+     {% assign grid_size = "s1 sm_s12 lg_s13" %}
+  {% when 4 %}
+     {% assign grid_size = "s1 sm_s12 lg_s14" %}
+{% endcase %}
+
+<div class="subscription-page">
+  <div class="subscription-page__container">
+
+    {%- if section.settings.show_page_title -%}
+      <section class="page-title container-wrap ">
+        <div class="container">
+          <div class="row row-lg inline u-center">
+            <h1 class="subscription-page_mainTitle">HELLO ! {{ page.title }}</h1>
+          </div>
+        </div>
+      </section>
+    {%- endif -%}
+
+    {% unless page.content %}
+    <div class="container-wrap">
+      <div class="container text-content rte">
+        <div class="row row-sm">
+          {{ page.content }}
+        </div>
+      </div>
+    </div>
+    {% endunless %}
+
+    <div class="container">
+
+
+
+        <div class="product-main flex-center">
+
+          <div class="product-images">
+              {% assign main_product = all_products[section.settings.main_product] %}
+
+
+                <div class="carousel carousel-main" data-flickity='{ "pageDots": false  }' >
+                  {% for image in main_product.images %}
+                    <div class="carousel-cell" style="background: url({{ image | product_img_url: 'master'}})"></div>
+                  {% endfor %}
+                </div>
+
+                <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }' >
+                  {% for image in main_product.images %}
+                    <div class="carousel-cell" style="background: url({{ image | product_img_url: 'master'}})"></div>
+                  {% endfor %}
+                </div>
+          </div>
+
+          <div class="product-description flex-center">
+              {% for block in section.blocks %}
+              {% assign product = all_products[block.settings.product] %}
+              {% assign section_images = ["value1"] %}
+              {%- assign image = block.settings.picto -%}
+
+              <div class="abonnements-items">
+
+                <div class="product_img">
+
+                  <img src="{{ image | img_url: '1024x' }}" alt="{{ image.alt | escape }}">
+                </div>
+
+                <div class="product-id">
+                  <h1>{{ product.id }}</h1>
+                </div>
+
+                <h1>{{ product.available }}</h1>
+
+                  {% form 'product', product, class:'productForm product-bar__form', data-color_swatches: color_swatches %}
+                    <div class="productForm-block no-show">
+                      <select id="product-bar-select" name="id">
+                      {% for variant in product.variants %}
+                        <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}" data-sku="{{variant.sku}}">
+                        {{ variant.title }} - {{ variant.price | money | strip_html }}
+                        </option>
+                      {% endfor %}
+                      </select>
+                    </div>
+
+                    <input type="hidden" class="inputCounter" name="quantity" value="1" />
+
+                    <div class="productForm-block">
+                      {% for variant in product.variants %}
+                         <button class="productForm-submit js-productForm-submit" type="submit" name="checkout" data-handle="{{product.handle}}">price {{ variant.price | money | strip_html }}</button>
+                      {% endfor %}
+                    </div>
+                  {% endform %}
+
+
+              </div>
+              {% endfor %}
+          </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="subscription__inner">
+      <div class="container-wrap">
+        <div class="container">
+          <div class="row row--flex row--flex_column">
+
+            {% for block in section.blocks %}
+              {% assign product = all_products[block.settings.product] %}
+              <div class="subscription-item block {{ grid_size }} animated fadeInUp" >
+                <div class="subscription-item__inner" style="background-color: {{block.settings.background_color}};color:{{block.settings.typo_color}};">
+
+                  <h2 class="subscription-title" style="color:{{block.settings.typo_color}};">{{ block.settings.titleColone }}</h2>
+
+                  <div class="subscription-item__description">
+                      {{ block.settings.contenu }}
+                  </div>
+
+                  <div class="subscription-item__price">
+                    {{ product.price | money }}
+                    <div class="subscription-item__price--condition">
+                      tous les {{product.metafields.subscriptions.shipping_interval_frequency}} mois
+                    </div>
+                  </div>
+
+                  <div class="subscription-item__form">
+
+                    {% assign sold_out = true %}
+                    {% if product.available %}
+                    {% assign sold_out = false %}
+                    {% endif %}
+
+
+                    {% unless sold_out %}{% include 'subscription-product' %}{% endunless %}
+
+                    <form id="add-item-form--{{ product.id }}" action="/cart/add" method="post" data-productid="{{product.id}}">
+
+                      <input type="hidden" name="id" value="{{ product.variants.first.id }}" data-productid="{{product.id}}" />
+            <div class="subscription-item__submit">
+                        <button class="productForm-submit js-subscription"
+                                style="color: {{block.settings.typo_color}}!important;"
+                                type="submit"
+                                name="checkout"
+                                data-handle="{{product.handle}}"
+                                data-id="{{ product.variants.first.id }}"
+                                data-interval-frequency="{{product.metafields.subscriptions.shipping_interval_frequency}}"
+                                data-interval-type="{{product.metafields.subscriptions.shipping_interval_unit_type}}"
+                                data-subscription="{{product.metafields.subscriptions.subscription_id}}"
+                                {% if sold_out %}disabled{% endif %}>
+                          {% unless sold_out %}
+                            S'abonner
+                          {% else %}
+                            {{ 'products.form.sold_out' | t }}
+                          {% endunless %}
+                        </button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                  <div class="subscription-item__footer">
+                    Livraison incluse en France métropolitaine
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  $('.carousel').flickity({
+    // options
+    cellAlign: 'left',
+    contain: true
+  });
+
+</script>
+
+<script>
+  $('.js-subscription').click(function(evt){
+    evt.preventDefault();
+    var shipping_interval_frequency = $(this).attr('data-interval-frequency'),
+        shipping_interval_unit_type = $(this).attr('data-interval-type'),
+        subscription_id = $(this).attr('data-subscription'),
+        id = parseInt($(this).attr('data-id'));
+    addItemToCart(id , 1, shipping_interval_frequency, shipping_interval_unit_type, subscription_id)
+  })
+</script>
+<script>
+  function addItemToCart (variant_id, quantity, shipping_interval_frequency, shipping_interval_unit_type, subscription_id) {
+    data = {
+      "quantity": quantity,
+      "id": variant_id,
+      "properties[shipping_interval_frequency]": shipping_interval_frequency,
+      "properties[shipping_interval_unit_type]": shipping_interval_unit_type,
+      "properties[subscription_id]": subscription_id
+    }
+    jQuery.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: data,
+      dataType: 'json',
+      success: function() {
+        window.location.href = '/cart';
+      }
+    });
+  }
+</script>
+
+{% schema %}
+  {
+    "name": "Les abonnements",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_page_title",
+        "label": "Show page title",
+        "default": false
+      },
+      {
+      "type": "product",
+      "id": "main_product",
+      "label": "Choisir un produit pour les images"
+          },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image de fond"
+      }
+    ],
+  "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "text",
+        "name":"Texte",
+        "settings": [
+          {
+            "type": "text",
+            "id": "titleColone",
+            "label": "Titre"
+          },
+          {
+            "type": "richtext",
+            "id": "contenu",
+      "label": "Contenu"
+      },
+          {
+            "type": "product",
+            "id": "product",
+      "label": "Choisir un produit"
+          },
+            {
+              "type": "image_picker",
+              "id": "picto",
+              "label": "choisir un picto"
+            },
+          {
+             "type": "color",
+             "id": "background_color",
+             "label": "Fond de couleur"
+          },
+          {
+             "type": "color",
+             "id": "typo_color",
+             "label": "Couleur de la police"
+          }
+    ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
